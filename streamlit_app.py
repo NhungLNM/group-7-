@@ -23,5 +23,11 @@ ax.set_title(f'Age Distribution of Athletes in {sport}')
 ax.set_xlabel('Age')
 ax.set_ylabel('Frequency')
 
+# Plotting - Pie Chart for Medal Distribution
+st.header("Medal Distribution")
+medal_counts = filtered_data['Medal'].value_counts()
+fig_pie = px.pie(values=medal_counts.values, names=medal_counts.index, title=f'Medal Distribution in {sport} from {country}')
+st.plotly_chart(fig_pie)
+
 # Display the plot
 st.pyplot(fig)
