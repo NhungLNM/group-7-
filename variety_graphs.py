@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
-color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 # Load the data
 file_path = 'Athlete_events.xlsx'
@@ -16,7 +14,8 @@ st.title('Olympic Athletes Analysis')
 
 # Sidebar for user input
 st.sidebar.title("Filter Options")
-
+    MIN_YEAR = 1960
+    MAX_YEAR = 2022
 # Convert NOC to country names using an example mapping (you should replace this with a complete mapping)
 noc_to_country = {
     'USA': 'United States',
