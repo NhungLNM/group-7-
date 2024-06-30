@@ -14,8 +14,7 @@ st.title('Olympic Athletes Analysis')
 
 # Sidebar for user input
 st.sidebar.title("Filter Options")
-    MIN_YEAR = 1896
-    MAX_YEAR = 2016
+
 # Convert NOC to country names using an example mapping (you should replace this with a complete mapping)
 noc_to_country = {
     'USA': 'United States',
