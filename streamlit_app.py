@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import plotly.express as px  # Import plotly express
+import plotly.express as px
 
 # Load the data
 file_path = 'Athlete_events.xlsx'
@@ -24,8 +24,6 @@ if not filtered_data.empty:
     ax.set_title(f'Age Distribution of Athletes in {sport}')
     ax.set_xlabel('Age')
     ax.set_ylabel('Frequency')
-
-    # Display the plot
     st.pyplot(fig)
 else:
     st.warning(f"No data available for {sport}")
@@ -41,6 +39,9 @@ else:
 
 # Plotting - Line Graph for Number of Athletes over the Years
 st.header("Number of Athletes Over the Years")
-year_counts = filtered_data['Year'].value_counts().sort_index()
-fig_line = px.line(x=year_counts.index, y=year_counts.values, labels={'x':'Year', 'y':'Number of Athletes'}, title=f'Number of Athletes Over the Years in {sport} from {country}')
-st.plotly_chart(fig_line)
+if not filtered_data.empty:
+    year_counts = filtered_data['Year'].value_counts().sort_index()
+    fig_line = px.line(x=year_counts.index, y=year_counts.values, labels={'x':'Year', 'y':'Number of Athletes'}, title=f'Number of Athletes Over the Years in {sport}')
+    st.plotly_chart(fig_line)
+else:
+    st.warning(f"No data available for {sport}")
