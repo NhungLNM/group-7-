@@ -78,7 +78,7 @@ filtered_data_medal = filtered_data_country[filtered_data_country['Sport'] == sp
 
 # Plotting - Pie Chart for Medal Distribution
 st.header("Medal Distribution")
-if not filtered_data_medal['Medal'].dropna().empty:
+if not filtered_data_medal.empty:
     medal_counts = filtered_data_medal['Medal'].value_counts()
     fig_pie = px.pie(values=medal_counts.values, names=medal_counts.index, title=f'Medal Distribution in {sport_medal} from {country}')
     st.plotly_chart(fig_pie)
@@ -100,5 +100,3 @@ if not filtered_data_athletes.empty:
     st.plotly_chart(fig_line)
 else:
     st.warning(f"No data available for {sport_athletes} from {country}")
-
-
